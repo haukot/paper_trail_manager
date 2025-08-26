@@ -8,7 +8,7 @@ class PaperTrailManager
         content_tag('em', 'nil')
       else
         h(object)
-      end
+      end.force_encoding('utf-8')
     end
 
     # Return an hash of changes for the given +PaperTrail::Version+ record. The resulting
@@ -59,7 +59,7 @@ class PaperTrailManager
     end
 
     def change_item_types
-      ActiveRecord::Base.subclasses.select do |klass|
+      ActiveRecord::Base.descendants.select do |klass|
         klass.include?(PaperTrail::Model::InstanceMethods)
       end.map(&:to_s)
     end
