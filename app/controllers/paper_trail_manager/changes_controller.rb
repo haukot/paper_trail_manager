@@ -106,7 +106,7 @@ class PaperTrailManager
       version_type = version.item_type.underscore.split('/').last
       send("#{version_type}_url", version.item_id)
     rescue NoMethodError
-      nil
+      changes_path
     end
     helper_method :change_item_url
 
