@@ -18,6 +18,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
   spec.add_dependency 'paper_trail', ['>= 3.0']
   spec.add_dependency 'rails', ['>= 3.0', '< 7.0']
+  spec.add_dependency 'i18n', '>= 0.7.0'
   spec.add_development_dependency 'appraisal', '~> 1.0'
   spec.add_development_dependency 'factory_girl_rails', '~> 4.0'
   spec.add_development_dependency 'rake', '~> 12.3'

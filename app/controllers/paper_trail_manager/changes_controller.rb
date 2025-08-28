@@ -15,7 +15,7 @@ class PaperTrailManager
     # List changes
     def index
       unless change_index_allowed?
-        flash[:error] = 'You do not have permission to list changes.'
+        flash[:error] = I18n.t('paper_trail_manager.changes.messages.permission_denied_index')
         return(redirect_to root_url)
       end
 
@@ -48,12 +48,12 @@ class PaperTrailManager
       begin
         @version = PaperTrail::Version.find(params[:id])
       rescue ActiveRecord::RecordNotFound
-        flash[:error] = 'No such version.'
+        flash[:error] = I18n.t('paper_trail_manager.changes.messages.version_not_found')
         return(redirect_to action: :index)
       end
 
       unless change_show_allowed?(@version)
-        flash[:error] = 'You do not have permission to show that change.'
+        flash[:error] = I18n.t('paper_trail_manager.changes.messages.permission_denied_show')
         return(redirect_to action: :index)
       end
 
@@ -68,12 +68,12 @@ class PaperTrailManager
       begin
         @version = PaperTrail::Version.find(params[:id])
       rescue ActiveRecord::RecordNotFound
-        flash[:error] = 'No such version.'
+        flash[:error] = I18n.t('paper_trail_manager.changes.messages.version_not_found')
         return(redirect_to(changes_path))
       end
 
       unless change_revert_allowed?(@version)
-        flash[:error] = 'You do not have permission to revert this change.'
+        flash[:error] = I18n.t('paper_trail_manager.changes.messages.permission_denied_revert')
         return(redirect_to changes_path)
       end
 
@@ -87,14 +87,14 @@ class PaperTrailManager
 
       if @result
         if @version.event == 'create'
-          flash[:notice] = 'Rolled back newly-created record by destroying it.'
+          flash[:notice] = I18n.t('paper_trail_manager.changes.messages.rollback_create_success')
           redirect_to changes_path
         else
-          flash[:notice] = 'Rolled back changes to this record.'
+          flash[:notice] = I18n.t('paper_trail_manager.changes.messages.rollback_update_success')
           redirect_to change_item_url(@version)
         end
       else
-        flash[:error] = "Couldn't rollback. Sorry."
+        flash[:error] = I18n.t('paper_trail_manager.changes.messages.rollback_error')
         redirect_to changes_path
       end
     end

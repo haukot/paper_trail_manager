@@ -69,6 +69,14 @@ You can also specify the layout:
 
     PaperTrailManager.layout = 'my_engine/application'
 
+### Localization
+
+PaperTrailManager supports internationalization with built-in English and Russian translations. To use Russian:
+
+    I18n.locale = :ru
+
+Add new languages by creating YAML files in `config/locales/` following the structure in `config/locales/en.yml`.
+
 ## Development
 
 Setup:

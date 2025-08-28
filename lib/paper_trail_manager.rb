@@ -2,6 +2,7 @@
 
 require 'rails'
 require 'paper_trail'
+require 'i18n'
 
 begin
   require 'will_paginate'
@@ -16,6 +17,10 @@ end
 class PaperTrailManager < Rails::Engine
   initializer 'paper_trail_manager.pagination' do
     ::ActionView::Base.send(:alias_method, :paginate, :will_paginate) if defined?(WillPaginate)
+  end
+
+  initializer 'paper_trail_manager.i18n' do
+    I18n.load_path += Dir[root.join('config', 'locales', '*.yml')]
   end
 
   @@whodunnit_name_method = :name

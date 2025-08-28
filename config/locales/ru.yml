@@ -1,0 +1,27 @@
+ru:
+  paper_trail_manager:
+    changes:
+      index:
+        title: "Изменения"
+        show: "Показать:"
+        all: "Все"
+        time: "Время"
+        details: "Атрибут с предыдущими и текущими значениями"
+        no_changes: "Изменения не найдены"
+      show:
+        title: "Изменение %{id}"
+        time: "Время"
+        details: "Атрибут с предыдущими и текущими значениями"
+      version:
+        change_id: "Изменение №%{id}"
+        by: "пользователем"
+        roll_back: "Откатить"
+        confirm_rollback: "Вы уверены?"
+      messages:
+        permission_denied_index: "У вас нет прав для просмотра списка изменений."
+        permission_denied_show: "У вас нет прав для просмотра этого изменения."
+        permission_denied_revert: "У вас нет прав для отката этого изменения."
+        version_not_found: "Такая версия не найдена."
+        rollback_create_success: "Откат новой записи выполнен путем ее удаления."
+        rollback_update_success: "Изменения в этой записи откачены."
+        rollback_error: "Не удалось выполнить откат. Извините."
